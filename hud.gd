@@ -75,12 +75,14 @@ func show_new_game():
 	await get_tree().create_timer(1.0).timeout
 	# create_timer() is an alternative for the Timer node
 	$StartButton.show()
+	$SeeRankButton.show()
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
 
 func _on_start_button_pressed():
 	$StartButton.hide()
+	$SeeRankButton.hide()
 	start_game.emit()
 
 func _on_mesage_timer_timeout():
