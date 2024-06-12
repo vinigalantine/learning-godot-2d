@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://capiwvphgmm84"]
+
+[ext_resource type="FontFile" uid="uid://bxsp5oebxs2vh" path="res://fonts/Xolonium-Regular.ttf" id="1_0du1t"]
+
+[node name="Row" type="HBoxContainer"]
+offset_right = 400.0
+offset_bottom = 60.0
+
+[node name="UserLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_0du1t")
+theme_override_font_sizes/font_size = 45
+text = "User"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_0du1t")
+theme_override_font_sizes/font_size = 45
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

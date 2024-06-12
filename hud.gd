@@ -70,6 +70,7 @@ func show_new_game():
 	$Message.add_theme_font_size_override("font_size",65)
 	$Message.text = "Dodge if you can!"
 	$ScoreLabel.text = "0"
+	$ScoreLabel.show()
 	$Message.show()
 	# Make an one-shot timer and wait for it
 	await get_tree().create_timer(1.0).timeout
@@ -79,7 +80,16 @@ func show_new_game():
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
-
+	
+func hideForRank():
+	$ScoreLabel.hide()
+	$Message.hide()
+	$StartButton.hide()
+	$NamePlayerScore.hide()
+	$SaveButton.hide()
+	$SeeRankButton.hide()
+	$GoBackRank.show()
+	
 func _on_start_button_pressed():
 	$StartButton.hide()
 	$SeeRankButton.hide()
@@ -95,3 +105,28 @@ func _on_name_player_score_text_changed(new_text):
 
 func _on_name_player_score_text_submitted(new_text):
 	save_score()
+
+func _on_see_rank_button_pressed():
+	hideForRank()
+	
+	var rankFile = FileAccess.open("user://rank.json", FileAccess.READ)
+	var rankParse : Dictionary = JSON.parse_string(rankFile.get_as_text())
+	rankFile.close()
+	
+	var count = 0
+	rankParse["rank"].sort_custom(testSort)
+	for item in rankParse["rank"]:
+		count += 1
+		$Rank.generateRow(item, count)
+	
+	$Rank.show()
+
+func _on_go_back_rank_pressed():
+	$Rank.hide()
+	$GoBackRank.hide()
+	show_new_game()
+	
+func testSort(a : Dictionary, b : Dictionary):
+	if a["score"] > b["score"]:
+		return true
+	return false

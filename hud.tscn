@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://mpoug6ye5ohr"]
+[gd_scene load_steps=8 format=3 uid="uid://mpoug6ye5ohr"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_3xspm"]
 [ext_resource type="FontFile" uid="uid://bxsp5oebxs2vh" path="res://fonts/Xolonium-Regular.ttf" id="1_8v3r7"]
+[ext_resource type="PackedScene" uid="uid://ca52mvghpnw5p" path="res://rank/rank.tscn" id="3_cvmwn"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_d7nxa"]
 action = &"ui_accept"
@@ -118,8 +119,30 @@ theme_override_fonts/font = ExtResource("1_8v3r7")
 theme_override_font_sizes/font_size = 30
 text = "See rank"
 
+[node name="GoBackRank" type="Button" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -110.0
+offset_right = 100.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_8v3r7")
+theme_override_font_sizes/font_size = 30
+text = "Go back"
+
+[node name="Rank" parent="." instance=ExtResource("3_cvmwn")]
+visible = false
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_mesage_timer_timeout"]
 [connection signal="text_changed" from="NamePlayerScore" to="." method="_on_name_player_score_text_changed"]
 [connection signal="text_submitted" from="NamePlayerScore" to="." method="_on_name_player_score_text_submitted"]
 [connection signal="pressed" from="SaveButton" to="." method="save_score"]
+[connection signal="pressed" from="SeeRankButton" to="." method="_on_see_rank_button_pressed"]
+[connection signal="pressed" from="GoBackRank" to="." method="_on_go_back_rank_pressed"]
