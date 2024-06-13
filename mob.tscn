@@ -1,52 +1,51 @@
 [gd_scene load_steps=10 format=3 uid="uid://3stddu2jbqqb"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_1sdgn"]
-[ext_resource type="Texture2D" uid="uid://me2886o520jd" path="res://art/enemyFlyingAlt_1.png" id="1_qkhwe"]
-[ext_resource type="Texture2D" uid="uid://ds03joev3deui" path="res://art/enemyFlyingAlt_2.png" id="2_pgeo8"]
-[ext_resource type="Texture2D" uid="uid://dudi5x4ui4qh8" path="res://art/enemySwimming_1.png" id="3_xc5jo"]
-[ext_resource type="Texture2D" uid="uid://dspge15170ot7" path="res://art/enemySwimming_2.png" id="4_i13by"]
-[ext_resource type="Texture2D" uid="uid://cnk5o03ype1vr" path="res://art/enemyWalking_1.png" id="5_73fg5"]
-[ext_resource type="Texture2D" uid="uid://bc1rhqnda83od" path="res://art/enemyWalking_2.png" id="6_b74p5"]
+[ext_resource type="Texture2D" uid="uid://dy7cjj2dk0hsy" path="res://art/mob/hospital1.png" id="2_emxa0"]
+[ext_resource type="Texture2D" uid="uid://d2bolvod8u6nx" path="res://art/mob/hospital2.png" id="3_b7jg7"]
+[ext_resource type="Texture2D" uid="uid://dqr3dinppnu4i" path="res://art/mob/invoice1.png" id="4_nnb5k"]
+[ext_resource type="Texture2D" uid="uid://utnkt3cxydxx" path="res://art/mob/invoice2.png" id="5_2srgj"]
+[ext_resource type="Texture2D" uid="uid://7acq3tlj050t" path="res://art/mob/taxes1.png" id="6_wecy3"]
+[ext_resource type="Texture2D" uid="uid://cjv4ob1hx7b3f" path="res://art/mob/taxes2.png" id="7_23f03"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2cnwf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_qkhwe")
+"texture": ExtResource("2_emxa0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_pgeo8")
+"texture": ExtResource("3_b7jg7")
 }],
 "loop": true,
-"name": &"fly",
+"name": &"hospital",
 "speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_xc5jo")
+"texture": ExtResource("4_nnb5k")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_i13by")
+"texture": ExtResource("5_2srgj")
 }],
 "loop": true,
-"name": &"swim",
+"name": &"invoice",
 "speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_73fg5")
+"texture": ExtResource("6_wecy3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_b74p5")
+"texture": ExtResource("7_23f03")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"taxes",
 "speed": 3.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3u7r"]
-radius = 48.0
-height = 130.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a37ca"]
+size = Vector2(93.75, 93.75)
 
 [node name="Mob" type="RigidBody2D" groups=["mobs"]]
 collision_mask = 0
@@ -57,12 +56,13 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.8, 0.8)
 sprite_frames = SubResource("SpriteFrames_2cnwf")
-animation = &"fly"
+animation = &"taxes"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.499999, 0.499998)
 rotation = 1.5708
 scale = Vector2(0.8, 0.8)
-shape = SubResource("CapsuleShape2D_p3u7r")
+shape = SubResource("RectangleShape2D_a37ca")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
